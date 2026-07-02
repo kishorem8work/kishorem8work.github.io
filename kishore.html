@@ -4,15 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kishore Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap');
 
 *{box-sizing:border-box;margin:0;padding:0;}
 
 :root{--red:#E50914;--dark:#141414;--card:#1e1e1e;--gold:#F5C518;--green:#46d369;--white:#e5e5e5;}
 
-body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;font-size:18px;overflow-x:hidden;}
+body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;font-size:18px;overflow-x:hidden;opacity:0;animation:fadeIn 0.3s ease forwards;animation-delay:0.1s;}
+@keyframes fadeIn{to{opacity:1;}}
 
 .scanlines{position:fixed;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px);pointer-events:none;z-index:9999;}
 
@@ -180,6 +184,28 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 @keyframes fpxfly{0%{transform:translateY(100%);opacity:0}10%{opacity:0.5}90%{opacity:0.5}100%{transform:translateY(-80px);opacity:0}}
 
+/* ---- Info Modal ---- */
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:10000;padding:20px;}
+
+.modal-overlay.active{display:flex;}
+
+.modal-box{background:var(--card);border:2px solid #2a2a2a;border-top:3px solid var(--red);max-width:420px;width:100%;padding:clamp(20px,4vw,32px);position:relative;clip-path:polygon(0 6px,6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px));animation:modalPop 0.25s ease;}
+
+@keyframes modalPop{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+
+.modal-close{position:absolute;top:10px;right:14px;font-family:'Press Start 2P',monospace;font-size:14px;color:#888;cursor:pointer;background:none;border:none;transition:color 0.2s;}
+
+.modal-close:hover{color:var(--red);}
+
+.modal-badge{font-family:'Press Start 2P',monospace;font-size:clamp(5px,1.2vw,8px);background:var(--red);color:#fff;padding:4px 10px;display:inline-block;margin-bottom:14px;clip-path:polygon(0 3px,3px 0,calc(100% - 3px) 0,100% 3px,100% calc(100% - 3px),calc(100% - 3px) 100%,3px 100%,0 calc(100% - 3px));}
+
+.modal-title{font-family:'Press Start 2P',monospace;font-size:clamp(11px,2vw,15px);color:#fff;line-height:1.8;margin-bottom:14px;}
+
+.modal-text{font-size:clamp(14px,1.8vw,17px);color:#ccc;line-height:1.6;margin-bottom:22px;}
+
+.modal-btns{display:flex;gap:10px;flex-wrap:wrap;}
+
 </style>
 </head>
 <body>
@@ -215,7 +241,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="hero-inner">
 
-<div class="hero-badge">FEATURED DEVELOPER </div>
+<div class="hero-badge"> DEV based in Bengaluru </div>
 
 <h1 class="hero-title">KISHORE M<br><span>FRONT-END</span><br>DEVELOPER</h1>
 
@@ -223,7 +249,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <span class="match">98% MATCH</span>
 
-<span class="tag">4+ YRS</span>
+<span class="tag">3+ YRS</span>
 
 <span class="tag">BENGALURU</span>
 
@@ -233,11 +259,15 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 </div>
 
-<p class="hero-desc">Shipping high-performance SPAs at Intuit via Cognizant. React \'b7 Redux \'b7 TypeScript \'b7 Spring Boot. Best All-Rounder Developer Q2 2025<span class="blink">_</span></p>
+<p class="hero-desc">Shipping high-performance SPAs at Intuit via Cognizant. React | Next.js | TypeScript | Spring Boot. Best All-Rounder Developer Q2 2025<span class="blink">_</span></p>
 
 <div class="hero-btns">
 
-<a href="mailto:mailto:kishore.m8.work@gmail.com" class="px-btn btn-primary">HIRE ME</a>
+<a href="mailto:kishore.m8.work@gmail.com?subject=This is regd. hiring you on the role of Front-End Developer&body=Hello Kishore,%0D%0A This is to let you know we're interested in your profile and your profile matches the requirements and we can schedule the call whenever you're available.%0D%0A%0D%0A%0D%0A With Regards,%0D%0A[Your Name]" 
+   class="px-btn btn-primary" 
+   onclick="return confirm('This will redirect you to your email client to contact Kishore. Do you want to continue?');">
+  HIRE ME
+</a>
 
 <button class="px-btn btn-secondary" id="more-info-btn">MORE INFO</button>
 
@@ -255,11 +285,9 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <span class="ticker-item">TYPESCRIPT</span><span class="ticker-item"></span>
 
-<span class="ticker-item">REDUX TOOLKIT</span><span class="ticker-item"></span>
-
 <span class="ticker-item">SPRING BOOT</span><span class="ticker-item"></span>
 
-<span class="ticker-item">JEST & RTL</span><span class="ticker-item"></span>
+<span class="ticker-item">JEST </span><span class="ticker-item"></span>
 
 <span class="ticker-item">CI/CD JENKINS</span><span class="ticker-item"></span>
 
@@ -271,11 +299,9 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <span class="ticker-item">TYPESCRIPT</span><span class="ticker-item"></span>
 
-<span class="ticker-item">REDUX TOOLKIT</span><span class="ticker-item"></span>
-
 <span class="ticker-item">SPRING BOOT</span><span class="ticker-item"></span>
 
-<span class="ticker-item">JEST & RTL</span><span class="ticker-item"></span>
+<span class="ticker-item">JEST </span><span class="ticker-item"></span>
 
 <span class="ticker-item">CI/CD JENKINS</span><span class="ticker-item"></span>
 
@@ -289,7 +315,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="stats-row">
 
-<div class="stat-card"><span class="stat-num">4+</span><span class="stat-label">Years XP</span></div>
+<div class="stat-card"><span class="stat-num">3+</span><span class="stat-label">Years XP</span></div>
 
 <div class="stat-card"><span class="stat-num">60+</span><span class="stat-label">Patches Shipped</span></div>
 
@@ -311,7 +337,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="card-thumb" style="background:linear-gradient(135deg,#001f3f,#003d7a);">
 
-<div class="px-icon" style="color:#61DAFB;"></div>
+<div class="px-icon" style="color:#61DAFB;"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/react-js-icon.png" width="40" height="40" alt="React JS Icon in SVG, PNG formats" title="React JS Icon"></div>
 
 <div class="px-bars"><div class="bar" style="height:80%"></div><div class="bar" style="height:95%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:88%"></div><div class="bar" style="height:60%"></div></div>
 
@@ -319,7 +345,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="card-info">
 
-<div class="card-name">REACT.JS</div><div class="card-sub">Hooks \'b7 Redux \'b7 Router</div>
+<div class="card-name">React JS</div><div class="card-sub">Hooks | Router | Tailwind CSS</div>
 
 <div class="card-level"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div>
 
@@ -341,7 +367,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="card-info">
 
-<div class="card-name">TYPESCRIPT</div><div class="card-sub">ES6+ \'b7 Interfaces</div>
+<div class="card-name">TYPESCRIPT</div><div class="card-sub">ES6+ | Interfaces</div>
 
 <div class="card-level"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div></div>
 
@@ -363,7 +389,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="card-info">
 
-<div class="card-name">JAVASCRIPT</div><div class="card-sub">ES6+ \'b7 Async \'b7 DOM</div>
+<div class="card-name">JAVASCRIPT</div><div class="card-sub">ES6+ | Async | DOM</div>
 
 <div class="card-level"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div>
 
@@ -373,33 +399,13 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 </div>
 
-<div class="card">
 
-<div class="card-thumb" style="background:linear-gradient(135deg,#1a0030,#4a0080);">
-
-<div class="px-icon" style="color:#764ABC;">RX</div>
-
-<div class="px-bars"><div class="bar" style="height:85%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:90%"></div><div class="bar" style="height:75%"></div><div class="bar" style="height:82%"></div></div>
-
-</div>
-
-<div class="card-info">
-
-<div class="card-name">REDUX</div><div class="card-sub">Toolkit \'b7 Thunk</div>
-
-<div class="card-level"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div></div>
-
-<div class="xp-bar-wrap"><div class="xp-bar" style="width:80%"></div></div>
-
-</div>
-
-</div>
 
 <div class="card">
 
 <div class="card-thumb" style="background:linear-gradient(135deg,#002200,#005500);">
 
-<div class="px-icon" style="color:#6DB33F;"></div>
+<div class="px-icon" style="color:#6DB33F;"><img class="app-preview__image-origin"  src="https://img.icons8.com/color/1200/spring-logo.jpg" srcset="https://img.icons8.com/?size=256&amp;id=90519&amp;format=png 1x, https://img.icons8.com/?size=512&amp;id=90519&amp;format=png 2x" loading="eager" fetchpriority="high" width="40" height="40" alt="Spring Boot icon" data-v-2b00a9ae=""></div>
 
 <div class="px-bars"><div class="bar" style="height:65%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:75%"></div></div>
 
@@ -407,7 +413,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="card-info">
 
-<div class="card-name">SPRING BOOT</div><div class="card-sub">MVC \'b7 JPA \'b7 REST</div>
+<div class="card-name">SPRING BOOT</div><div class="card-sub">MVC | JPA | REST</div>
 
 <div class="card-level"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div><div class="dot empty"></div></div>
 
@@ -419,9 +425,9 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="card">
 
-<div class="card-thumb" style="background:linear-gradient(135deg,#1a0000,#500000);">
+<div class="card-thumb" style="background:linear-gradient(135deg,#f6f3f3,#500000);">
 
-<div class="px-icon" style="color:#E50914;"></div>
+<div class="px-icon" style="color:#E50914;"><img src="https://cdn-icons-png.flaticon.com/128/5266/5266248.png" loading="lazy" alt="Devops " title="Devops " width="40" height="40"></div>
 
 <div class="px-bars"><div class="bar" style="height:88%"></div><div class="bar" style="height:72%"></div><div class="bar" style="height:95%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:80%"></div></div>
 
@@ -455,20 +461,17 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="tl-card">
 
-<div class="tl-role">ASSOCIATE REACT.JS DEV & PMO</div>
+<div class="tl-role">ASSOCIATE REACT JS DEV & PMO</div>
 
 <div class="tl-company">Cognizant Intuit</div>
 
-<div class="tl-date">JUN 2025 \'96 PRESENT \'b7 BENGALURU</div>
+<div class="tl-date">JUN 2025 | PRESENT | BENGALURU</div>
 
 <ul class="tl-bullets">
 
 <li>Owns 3 production SPAs + 4 plugin modules</li>
 
-<li>Optimized Core Web Vitals \'97 code splitting, lazy loading</li>
-
-<li>Coordinated 60+ patches & 25+ dev releases</li>
-
+<li>Optimized Core Web Vitals | code splitting | Lazy loading</li>
 <li>Built executive KPI dashboards for leadership</li>
 
 </ul>
@@ -483,21 +486,21 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="tl-card">
 
-<div class="tl-role">PROGRAM ANALYST \'96 FULL STACK</div>
+<div class="tl-role">PROGRAM ANALYST | FULL STACK</div>
 
 <div class="tl-company">Cognizant Intuit</div>
 
-<div class="tl-date">FEB 2023 \'96 JUN 2025 \'b7 BENGALURU</div>
+<div class="tl-date">FEB 2023 | JUN 2025 | BENGALURU</div>
 
 <ul class="tl-bullets">
 
-<li>AI chatbot for NL Excel data analysis</li>
+<li>AI chatbot for Excel data analysis</li>
 
-<li>KPI tracking: 2 days 20 mins for 150+ devs</li>
+<li>KPI tracking: 2 days to 20 mins for 150+ devs</li>
 
-<li>Email automation: 15 4 mins per email</li>
+<li>Email automation: 15 to 4 mins per email</li>
 
-<li>Best All-Rounder Developer \'97 Intuit Q2 2025</li>
+<li>Best All-Rounder Developer Intuit Q2 2025</li>
 
 </ul>
 
@@ -511,15 +514,15 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="tl-card">
 
-<div class="tl-role">DEVELOPER INTERN \'96 FULL STACK</div>
+<div class="tl-role">DEVELOPER INTERN | FULL STACK</div>
 
 <div class="tl-company">Cognizant</div>
 
-<div class="tl-date">FEB 2022 \'96 JAN 2023 \'b7 BENGALURU</div>
+<div class="tl-date">FEB 2022 | JAN 2023 | BENGALURU</div>
 
 <ul class="tl-bullets">
 
-<li>Built e-commerce app \'97 React.js + Spring Boot</li>
+<li>Built e-commerce app | React.js + Spring Boot</li>
 
 <li>Intensive training in React, JS, HTML5, CSS3</li>
 
@@ -539,15 +542,13 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="ach-grid">
 
-<div class="ach-card"><div class="ach-shine"></div><div class="ach-icon"></div><div class="ach-title">BEST ALL-ROUNDER</div><div class="ach-desc">Intuit Award \'b7 Q2 2025</div></div>
-
 <div class="ach-card"><div class="ach-shine"></div><div class="ach-icon"></div><div class="ach-title">60+ PATCHES SHIPPED</div><div class="ach-desc">Zero-downtime via Jenkins</div></div>
 
-<div class="ach-card"><div class="ach-shine"></div><div class="ach-icon"></div><div class="ach-title">AI BOT BUILDER</div><div class="ach-desc">NL chatbot on Excel data</div></div>
+<div class="ach-card"><div class="ach-shine"></div><div class="ach-icon"></div><div class="ach-title">AI BOT BUILDER</div><div class="ach-desc"> chatbot on Excel data</div></div>
 
-<div class="ach-card"><div class="ach-shine"></div><div class="ach-icon"></div><div class="ach-title">AUTOMATION KING</div><div class="ach-desc">2 days 20 minutes</div></div>
+<div class="ach-card"><div class="ach-shine"></div><div class="ach-icon"></div><div class="ach-title">AUTOMATION Tasks</div><div class="ach-desc">2 days to 20 minutes</div></div>
 
-<div class="ach-card"><div class="ach-shine"></div><div class="ach-icon"></div><div class="ach-title">B.E. EEE GRAD</div><div class="ach-desc">KRCE \'b7 CGPA 8.01/10</div></div>
+<div class="ach-card"><div class="ach-shine"></div><div class="ach-icon"></div><div class="ach-title">B.E. EEE GRAD</div><div class="ach-desc">KRCE CGPA 8.01/10</div></div>
 
 <div class="ach-card"><div class="ach-shine"></div><div class="ach-icon"></div><div class="ach-title">CERTIFIED</div><div class="ach-desc">DevTools \'b7 Microservices</div></div>
 
@@ -561,23 +562,19 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="contact-row">
 
-<a href="mailto:mailto:kishore.m8.work@gmail.com" class="contact-card">
+<a href="mailto:kishore.m8.work@gmail.com" class="contact-card" onclick="return confirm('This will redirect you to your email client to contact Kishore. Do you want to continue?');">
 
 <div class="contact-icon"></div>
 
-<div><div class="contact-label">EMAIL</div><div class="contact-val">mailto:kishore.m8.work@gmail.com</div></div>
+<div><div class="contact-label">EMAIL</div><div class="contact-val">kishore.m8.work@gmail.com</div></div>
 
 </a>
 
-<a href="tel:+919566816401" class="contact-card">
 
-<div class="contact-icon"></div>
 
-<div><div class="contact-label">PHONE</div><div class="contact-val">+91 9566816401</div></div>
 
-</a>
 
-<a href="https://www.linkedin.com/in/kishore-m/" target="_blank" class="contact-card">
+<a href="https://www.linkedin.com/in/kishore-m-1425353b4/" target="_blank" class="contact-card">
 
 <div class="contact-icon" style="font-family:'Press Start 2P',monospace;font-size:9px;">in</div>
 
@@ -585,11 +582,11 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 </a>
 
-<a href="https://github.com/" target="_blank" class="contact-card">
+<a href="https://github.com/kishorem8work" target="_blank" class="contact-card">
 
 <div class="contact-icon"></div>
 
-<div><div class="contact-label">GITHUB</div><div class="contact-val">http://github.com/kishore</div></div>
+<div><div class="contact-label">GITHUB</div><div class="contact-val">http://github.com/k</div></div>
 
 </a>
 
@@ -599,11 +596,41 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <footer class="footer">
 
-<div class="footer-logo">http://kishore.dev/ \'a9 2025</div>
+<div class="footer-logo">I will something cool here as of now it's gonna be since 2022</div>
 
 <div style="font-size:clamp(11px,1.5vw,15px);">INSERT COIN TO HIRE<span class="blink">_</span></div>
 
 </footer>
+
+<div class="modal-overlay" id="infoModal">
+
+<div class="modal-box">
+
+<button class="modal-close" id="modalClose">✕</button>
+
+<div class="modal-badge">LEVEL UP</div>
+
+<div class="modal-title">LET'S CONNECT</div>
+
+<p class="modal-text">For more info, why don't we connect? I'll let you know about me, and you can tell me about your company.</p>
+
+<div class="modal-btns">
+
+<a href="mailto:kishore.m8.work@gmail.com?subject=Let's Connect&body=Hi Kishore,%0D%0A%0D%0AI'd like to connect and share more about our company and hiring procedures.%0D%0A%0D%0AWith Regards,%0D%0A[Your Name]" 
+   class="px-btn btn-primary"
+   onclick="return confirm('This will redirect you to your email client to contact Kishore. Do you want to continue?');">
+  EMAIL ME
+</a>
+
+<a href="https://www.linkedin.com/in/kishore-m-1425353b4/" target="_blank" class="px-btn btn-secondary">
+  LINKEDIN
+</a>
+
+</div>
+
+</div>
+
+</div>
 
 <script>
 
@@ -667,7 +694,31 @@ document.getElementById('nav-xp').addEventListener('click', function() { navScro
 
 document.getElementById('nav-contact').addEventListener('click', function() { navScroll('contact'); });
 
-document.getElementById('more-info-btn').addEventListener('click', function() { navScroll('skills'); });
+var modal = document.getElementById('infoModal');
+
+document.getElementById('more-info-btn').addEventListener('click', function() {
+
+modal.classList.add('active');
+
+});
+
+document.getElementById('modalClose').addEventListener('click', function() {
+
+modal.classList.remove('active');
+
+});
+
+modal.addEventListener('click', function(e) {
+
+if (e.target === modal) modal.classList.remove('active');
+
+});
+
+document.addEventListener('keydown', function(e) {
+
+if (e.key === 'Escape') modal.classList.remove('active');
+
+});
 
 var observer = new IntersectionObserver(function(entries) {
 
