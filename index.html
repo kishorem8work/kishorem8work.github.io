@@ -259,7 +259,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <nav class="nav">
 
-<div class="logo" id="logo">KI<span>SH</span>OR<span>E</span>.DEV</div>
+<div class="logo" id="logo">K<span>I</span>SHO<span>RE</span>.DEV</div>
 
 <div class="nav-links">
 
@@ -469,7 +469,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="card">
 
-<div class="card-thumb" style="background:linear-gradient(135deg,#f6f3f3,#500000);">
+<div class="card-thumb" style="background:linear-gradient(135deg,#1d1c1c,#500000);">
 
 <div class="px-icon" style="color:#E50914;"><img src="https://cdn-icons-png.flaticon.com/128/5266/5266248.png" loading="lazy" alt="Devops " title="Devops " width="40" height="40"></div>
 
@@ -479,7 +479,7 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <div class="card-info">
 
-<div class="card-name">CI/CD & DEVOPS</div><div class="card-sub">Jenkins \'b7 GitHub</div>
+<div class="card-name">CI/CD & DEVOPS</div><div class="card-sub">Jenkins | GitHub</div>
 
 <div class="card-level"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div></div>
 
@@ -688,13 +688,13 @@ body{background:var(--dark);color:var(--white);font-family:'VT323',monospace;fon
 
 <span class="ghost-emoji">👻</span>
 
-<span class="ghost-label">SYSTEM MESSAGE</span>
+<span  class="ghost-label">Kishore's Message</span>
 
 </div>
 
 <button class="ghost-acc-trigger" id="ghostAccTrigger">
 
-<span>TAP TO EXPAND</span>
+<span  id="avatar">TAP TO EXPAND</span>
 
 <span class="ghost-acc-arrow">▼</span>
 
@@ -949,6 +949,8 @@ openGhost();
 ghostAccTrigger.addEventListener('click', function(e) {
 
 e.stopPropagation();
+
+playCoinSound();
 
 ghostAccTrigger.classList.toggle('open');
 
